@@ -27,6 +27,10 @@ var contributionSchema = new mongoose.Schema({
     userid:{
         type:String,required:true
     },
+    username:
+    {
+        type:String,required:true
+    },
     tags:{
         type:[],required:true,default:[]
     }

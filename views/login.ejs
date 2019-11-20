@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html  >
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="L`devpe`">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="/images/picture1-122x184.png" type="image/x-icon">
-  <meta name="description" content="L`devpe`">
-  
-  <title>login</title>
-  <link rel="stylesheet" href="/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="/tether/tether.min.css">
-  <link rel="stylesheet" href="/animatecss/animate.min.css">
-  <link rel="stylesheet" href="/socicon/css/styles.css">
-  <link rel="stylesheet" href="/dropdown/css/style.css">
-  <link rel="stylesheet" href="/theme/css/style.css">
-  <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
-  
+<%- include part1.ejs %>
+<title>Login | L`devpe`</title>
+<%- include part2.ejs %>
   <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
   <style>
       h1{
@@ -119,10 +99,11 @@
       }
   </style>
   
+  <% var pri = "";if(message == 1){pri = "incorrect password";}else if(message == 2){pri = "not a registered mail";}else if(message == 3)pri="sorry, user doesnot exist";else if(message == 4)pri="session timed out please re login";else if(message == 5)pri="succesfully created account";else if(message == 6)pri = "account already exist";else if(message == 7)pri="password updated";else{pri = ""; }%>
 </head>
 <body>
  
-<section class="engine" style="margin-top:2rem;"><a href="https://google.com"></a></section><section class="header11 cid-rHx7Td5WLR mbr-fullscreen" id="header11-3l">
+<section class="engine" style="margin-top:2rem;"><a href="https://google.com"></a></section><section class="header11 z1 mbr-fullscreen" id="header11-3l">
 
   
     
@@ -136,7 +117,7 @@
             </h1>
             
         <div class="container">
-            <p style="margin:0;margin-left: 1.5rem;font-size:1.5rem;font-weight: normal;color:lightgreen;"> <%= message %></p>
+            <p style="margin:0;margin-left: 1.5rem;font-size:1.5rem;font-weight: normal;color:lightgreen;"> <%= pri %></p>
             <form action="http://localhost:3000/login" method="POST">
                 <div>
                     <label for="username">EMAIL</label>

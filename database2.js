@@ -7,7 +7,7 @@ mongoose.connect("mongodb://localhost:27017/SEAUG2019",{useNewUrlParser: true,us
 
 var DiscSchema = new mongoose.Schema({
     textid:{
-        type:Number,required:true
+        type:String,required:true
     },
     postedtime:{
         type:Date,default:Date.now()

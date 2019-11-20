@@ -205,7 +205,7 @@ app.get("/logout",function(req,res,next){
 });
 
 app.get("/disc/:id",function(req,res,next){
-    disc.find({textid:Number(req.params.id)},function(err,result){
+    disc.find({tags:{$all:[req.params.id]}},function(err,result){
         if(err) throw err;
         res.render("disc",{message:result,id:req.params.id});
     });
@@ -274,7 +274,6 @@ app.post("/disc/:id/post",function(req,res,next){
 app.get("/profile",function(req,res,next){
     contribution.find({userid:req.user._id},function(err,results){
         if(err) throw err;
-        console.log(results);
         res.render("page9.ejs",{name:req.user.name,email:req.user.email,contributions:results});
     });
 });
@@ -298,6 +297,7 @@ app.post("/contribute",function(req,res,next){
     console.log(lin);
     var newcontribution = new contribution({
         userid:req.user._id,
+        username:req.user.name,
         source: lin,
         heading:req.body.heading,
         tags:req.body.post,
@@ -315,10 +315,12 @@ app.post("/contribute",function(req,res,next){
     });
 });
 
-app.get("/takeaways",function(req,res,next){
-    contribution.find({},function(err,results){
+app.get("/takeaways/:id",function(req,res,next){
+    console.log(req.params.id);
+    contribution.find({tags:{$all:[req.params.id]}},function(err,results){
         if(err) throw err;
-        res.render("page10.ejs",{contributions:results,user:req.user.name});
+        console.log(results);
+        res.render("page10.ejs",{contributions:results});
     });
 });
 
